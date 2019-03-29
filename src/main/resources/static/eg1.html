@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>vue和elementUI搭载本页面</title>
+		<link rel="stylesheet" href="http://xiaonixn00.top/xiaonixn00/css/article.css" />
+		<link rel="shortcut icon" href="http://xiaonixn00.top/xiaonixn00/img/logo.png">
+		<!--vue.js-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- element.css引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- element.js引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<!--jquery-->
+		<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+		<!--<script type="text/javascript">
+			$(document).ready(function() {
+
+				let winTop = $(document).offset().top;
+				console.log("wintop:" + winTop)
+				console.log("aaa")
+
+			})
+		</script>-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//				let winTop = $(window).scrollTop();
+				$(window).scroll(function() {
+					let winTop = $(window).scrollTop();
+					if(winTop >= 60) {
+						$(".header").css({
+							"position": "fixed",
+							"width": "100%",
+							"background": "#fff"
+						})
+						$(".header ul li").css({"color": "#34495E"});
+					} else {
+						$(".header").css({
+							"position": "static",
+							"background": "transparent"
+						})
+						$(".header ul li").css({"color": "#fff"});
+					}
+
+					console.log(winTop)
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+			<el-container>
+				<!--头部-->
+				<el-header style="">
+					<el-row :gutter="24">
+						<el-header>
+							<el-row :gutter="24" class="header" style="z-index: 3;">
+								<el-col :span="1" :offset="3">
+									<a href="index.html" class="logo">
+										<img src="http://xiaonixn00.top/xiaonixn00/img/logo1-1.png" alt="logo" style="padding: 20px 0" />
+									</a>
+								</el-col>
+
+								<el-col :span="12" :offset="7">
+									<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
+										<el-menu-item index="1">首页</el-menu-item>
+										<el-menu-item index="2">文章</el-menu-item>
+										<el-menu-item index="3">软件</el-menu-item>
+										<el-menu-item index="4">其他</el-menu-item>
+										<el-menu-item index="5">关于我</el-menu-item>
+									</el-menu>
+								</el-col>
+
+							</el-row>
+							<el-row :gutter="24" style="height: 50px;"></el-row>
+							<el-row type="flex" justify="center" class="articleTitle">
+								<el-col :span="8">
+									<h1>vue和elementUI搭载本页面</h1>
+									<p>2019-02-28 20:01:25</p>
+									<p class="downTag"><i></i></p>
+								</el-col>
+							</el-row>
+
+						</el-header>
+					</el-row>
+				</el-header>
+				<el-col class="bgimg" style="background-image: url(img/1.svg);"></el-col>
+				<!--主题-->
+				<el-main>
+					<el-row type="flex" justify="center">
+						<el-col :span="14">
+							<p>state 是 React 中的重要概念。React 是通过管理状态来实现对组件的管理，通过 this.state 来访问 state， 通过 this.setState 来更新 state。 setState 通过一个队列机制来实现 state 的更新。调用 setState 函数之后</p>
+							<p>state 是 React 中的重要概念。React 是通过管理状态来实现对组件的管理，通过 this.state 来访问 state， 通过 this.setState 来更新 state。 setState 通过一个队列机制来实现 state 的更新。调用 setState 函数之后</p>
+						</el-col>
+					</el-row>
+				</el-main>
+				<!--尾部-->
+				<el-footer>
+					<el-row :gutter="24" type="flex" justify="center">
+						<el-col :span="8">
+							2018 &copy; designed by
+							<a href="#">xiaoni</a>
+						</el-col>
+					</el-row>
+				</el-footer>
+			</el-container>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				activeIndex: "1",
+				activeTextColor: "#455A64",
+			},
+			methods: {
+				handleSelect(key, keyPath) {
+					console.log(key, keyPath);
+				}
+			}
+		})
+	</script>
+
+</html>

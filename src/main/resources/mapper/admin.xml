@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaonixn00.dao.AdminDao">
+    <!--INSERT INTO article(id, title, keywords, description, pic, content, click, time, inindex, str)
+    VALUES (1, 'vue和elementUI搭载本页面', 'vue', '调用 setState 函数之后', 'img/ss.jpg', '过 之后', 1, '2019-02-28 18:08:50', 1, 'temp/');-->
+    <!--新建文章-->
+    <insert id="newArticle" parameterType="map">
+        insert into article(title,keywords,description,pic,content,time,inindex)
+        values(#{title},#{keywords},#{description},#{pic},#{content},now(),#{inindex})
+    </insert>
+    <!--查询文章列表-->
+    <select id="articleList" parameterType="map" resultType="map">
+        select id, title, keywords, description, pic, content, click, DATE_FORMAT(time,'%Y-%m-%d %k:%i:%S') time ,
+        inindex inIndex, str from article
+        <where>
+            <if test="keywords != null">
+                keywords like '%${keywords}%'
+            </if>
+        </where>
+    </select>
+    <!--统计文章数量-->
+    <select id="countArticle" resultType="int">
+        select count(*) from article
+        <where>
+            <if test="keywords != null">
+                keywords like '%${keywords}%'
+            </if>
+        </where>
+    </select>
+
+</mapper>

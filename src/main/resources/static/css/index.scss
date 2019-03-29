@@ -1,0 +1,166 @@
+@font-face{
+    font-family: "ruda";
+    src: url("../font/ruda-regular-webfont.woff.ttf"),
+    url("../font/ruda-regular-webfont.woff.otf"),
+    url("../font/ruda-regular-webfont.woff.woff"),
+    url("../font/ruda-regular-webfont.woff.svg"),
+    url("../font/ruda-regular-webfont.woff.eot")
+}
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 16px;
+    color: #34495e;
+    //公共样式
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    h1 {
+        font-weight: 800;
+        border-bottom: 2px solid transparent;
+        display: inline-block;
+        transition: all .5s;
+        margin: 20px 0;
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .el-tag--mini {
+        font-family: 'Roboto Mono';
+    }
+    //公共样式结束
+    #app {
+        >section.el-container {
+            position: relative;
+        }
+        .el-header,
+        .el-footer {
+            background-color: #fff;
+            color: #333;
+            //          text-align: center;
+            line-height: 60px;
+            z-index: 10;
+        }
+        .el-header .logo img {
+            padding: 10px;
+        }
+        .el-carousel {
+            width: 100%;
+        }
+        .dataTime {
+            font-family: "ruda";
+        }
+        header.el-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .el-main {
+            background-color: #f5f5f5;
+            margin: 60px 0 60px 0;
+            .articeList {
+                margin-bottom: 20px;
+                >.el-col {
+                    margin-bottom: 20px;
+                }
+                .time {
+                    font-size: 13px;
+                    color: #7f9abd;
+                    margin: 0 10px 0 10px;
+                }
+                .bottom {
+                    margin-top: 13px;
+                    line-height: 12px;
+                }
+                .button {
+                    padding: 0;
+                    float: right;
+                }
+                .image {
+                    width: 150px;
+                    height: 150px;
+                    display: block;
+                    transition: all .5s;
+                }
+                .imgDesc {
+                    width: 150px;
+                    height: 150px;
+                    overflow: hidden;
+                    border-radius: 10px;
+                }
+                .imgDesc a:hover img {
+                    transform: scale(1.1);
+                    transition: all .5s;
+                }
+                .clearfix:before,
+                .clearfix:after {
+                    display: table;
+                    content: "";
+                }
+                .clearfix:after {
+                    clear: both
+                }
+                h1:hover {
+                    transform: translateX(10px);
+                    color: #409EFF;
+                    transition: all .5s;
+                }
+            }
+            .aaa {
+                margin-top: 10px;
+            }
+            .description {
+                text-indent: 2em;
+                margin-top: 10px;
+            }
+            .rightTag {
+                >.el-col {
+                    margin-bottom: 20px;
+                }
+            }
+            .box-ul li {
+                overflow: hidden;
+                line-height: 20px;
+                a {
+                    transition: all .5s;
+                }
+                a:hover {
+                    color: #409EFF;
+                    transition: all .5s;
+                }
+            }
+            .box-ul .timeList {
+                display: inline-block;
+                min-width: 120px;
+            }
+            .box-ul .timeSum {
+                display: inline-block;
+            }
+        }
+        .el-footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #f5f5f5;
+            text-align: center;
+            a {
+                color: #34495e;
+                transition: all .5s;
+            }
+            a:hover {
+                color: #409EFF;
+                transition: all .5s;
+            }
+        }
+    }
+}

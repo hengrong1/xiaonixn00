@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xiaonixn00.dao.Leading">
+    <!--获取列表-->
+    <select id="getList" resultType="map">
+        -- id,title,keywords,description,pic,content,click,time,inindex
+        select id,title,keywords,description,pic,str,content,click,inindex,DATE_FORMAT(time,'%Y-%m-%d %k:%i:%S') time from article
+    </select>
+    <select id="getListCount" resultType="int">
+        select count(*) from article
+    </select>
+<!--获取每月发布文章的数量-->
+    <select id="getMonthSum" resultType="map">
+        select substring(time,1,7) month,count(*) sum from article GROUP BY substring(time,1,7)
+    </select>
+<!--获取所有文章关键字-->
+    <select id="getKeyWord" resultType="map">
+        select distinct keywords from article
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@font-face { font-family: "ruda"; src: url("../font/ruda-regular-webfont.woff.ttf"), url("../font/ruda-regular-webfont.woff.otf"), url("../font/ruda-regular-webfont.woff.woff"), url("../font/ruda-regular-webfont.woff.svg"), url("../font/ruda-regular-webfont.woff.eot"); }
+body { margin: 0; font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif; font-size: 16px; color: #34495e; }
+body a { text-decoration: none; color: inherit; }
+body li { padding: 0; margin: 0; list-style: none; }
+body h1 { font-weight: 800; border-bottom: 2px solid transparent; display: inline-block; transition: all .5s; margin: 20px 0; font-size: 20px; }
+body p { font-size: 14px; line-height: 20px; }
+body .el-tag--mini { font-family: 'Roboto Mono'; }
+body #app > section.el-container { position: relative; }
+body #app .el-header, body #app .el-footer { background-color: #fff; color: #333; line-height: 60px; z-index: 10; }
+body #app .el-header .logo img { padding: 10px; }
+body #app .el-carousel { width: 100%; }
+body #app .dataTime { font-family: "ruda"; }
+body #app header.el-header { position: fixed; top: 0; right: 0; bottom: 0; left: 0; }
+body #app .el-main { background-color: #f5f5f5; margin: 60px 0 60px 0; }
+body #app .el-main .articeList { margin-bottom: 20px; }
+body #app .el-main .articeList > .el-col { margin-bottom: 20px; }
+body #app .el-main .articeList .time { font-size: 13px; color: #7f9abd; margin: 0 10px 0 10px; }
+body #app .el-main .articeList .bottom { margin-top: 13px; line-height: 12px; }
+body #app .el-main .articeList .button { padding: 0; float: right; }
+body #app .el-main .articeList .image { width: 150px; height: 150px; display: block; transition: all .5s; }
+body #app .el-main .articeList .imgDesc { width: 150px; height: 150px; overflow: hidden; border-radius: 10px; }
+body #app .el-main .articeList .imgDesc a:hover img { transform: scale(1.1); transition: all .5s; }
+body #app .el-main .articeList .clearfix:before, body #app .el-main .articeList .clearfix:after { display: table; content: ""; }
+body #app .el-main .articeList .clearfix:after { clear: both; }
+body #app .el-main .articeList h1:hover { transform: translateX(10px); color: #409EFF; transition: all .5s; }
+body #app .el-main .aaa { margin-top: 10px; }
+body #app .el-main .description { text-indent: 2em; margin-top: 10px; }
+body #app .el-main .rightTag > .el-col { margin-bottom: 20px; }
+body #app .el-main .box-ul li { overflow: hidden; line-height: 20px; }
+body #app .el-main .box-ul li a { transition: all .5s; }
+body #app .el-main .box-ul li a:hover { color: #409EFF; transition: all .5s; }
+body #app .el-main .box-ul .timeList { display: inline-block; min-width: 120px; }
+body #app .el-main .box-ul .timeSum { display: inline-block; }
+body #app .el-footer { position: absolute; bottom: 0; width: 100%; border-top: 1px solid #f5f5f5; text-align: center; }
+body #app .el-footer a { color: #34495e; transition: all .5s; }
+body #app .el-footer a:hover { color: #409EFF; transition: all .5s; }
+
+/*# sourceMappingURL=index.css.map */

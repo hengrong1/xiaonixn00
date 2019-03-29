@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!--<link rel="stylesheet" href="elementui/index.css" />
+    <script type="text/javascript" src="elementui/index.js"></script>-->
+    <link rel="shortcut icon" href="img/logo.png">
+    <!--<link rel="stylesheet" href="css/style.css" />-->
+    <link rel="stylesheet" href="css/index.css"/>
+    <!--路由-->
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+    <!--jquery-->
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let rightTagLeft = $(".rightTag").offset().left;
+        let rightTagWidth = $(".rightTag").width();
+
+        console.log(rightTagLeft)
+        $(window).scroll(function () {
+            let winTop = $(window).scrollTop();
+            let width = $(".rightTag").width();
+            console.log($(".rightTag").width())
+            if (winTop >= 60) {
+                $(".rightTag ").css({
+                    "position": "fixed",
+                    "left": rightTagLeft - 60 + "px",
+                    "width": rightTagWidth + "px"
+                });
+            } else {
+                $(".rightTag").css({
+                    "position": "fixed",
+                    "left": rightTagLeft - 60 + "px",
+                });
+            }
+            // let letft = $("#app").offset().left;
+
+            // console.log(winTop)
+        })
+    })
+</script>
+<body>
+<div id="app">
+    <el-container>
+        <el-header>
+            <el-row :gutter="24">
+                <el-col :span="1" :offset="3">
+                    <a href="index.html" class="logo">
+                        <img src="img/logo1-1.png" alt="logo"/>
+                    </a>
+                </el-col>
+
+                <el-col :span="12" :offset="7">
+                    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
+                             @select="handleSelect">
+                        <el-menu-item index="1">首页</el-menu-item>
+                        <el-menu-item index="2">文章</el-menu-item>
+                        <el-menu-item index="3">软件</el-menu-item>
+                        <el-menu-item index="4">其他</el-menu-item>
+                        <el-menu-item index="5">关于我</el-menu-item>
+                    </el-menu>
+                </el-col>
+            </el-row>
+        </el-header>
+        <el-main>
+            <!--轮播图-->
+            <!--<el-row>
+                <el-col :span="18" :offset="2">
+                    <el-carousel :interval="3000" arrow="always">
+                        <el-carousel-item v-for="item in img" :key="item">
+                            <img :src=item alt="轮播图">
+                        </el-carousel-item>
+                    </el-carousel>
+                </el-col>
+            </el-row>-->
+
+            <!--列表-->
+            <!--<el-row>
+                <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+                    <el-card :body-style="{ padding: '0px' }">
+                        <div style="padding: 14px;">
+                            <span>好吃的汉堡</span>
+                            <div class="bottom clearfix">
+                                <el-button type="text" class="button">操作按钮</el-button>
+                            </div>
+                        </div>
+                    </el-card>
+                </el-col>
+            </el-row>-->
+            <!--文章主题,包括右侧侧栏-->
+            <el-row :gutter="24">
+                <el-row type="flex" justify="center">
+                    <el-col :span="18">
+                        <!--文章列表-->
+                        <el-col :span="16" style="margin-bottom: 20px;">
+                            <!--<el-col :span="14" :offset="2">
+                                <h1>vue和elementUI搭载本页面</h1>
+
+                            </el-col>-->
+                            <!--示例1-->
+                            <!--<el-row class="articeList">
+                                <el-col :span="20" :offset="1">
+                                    <el-col><h1><a href="#">vue和elementUI搭载本页面</a></h1></el-col>
+                                    <el-col style="color: #7f9abd;"><span>2019-2-28</span></el-col>
+                                    <el-col><a href="#"><el-tag>标签一</el-tag></a></el-col>
+                                    <el-col><p>state 是 React 中的重要概念。React 是通过管理状态来实现对组件的管理，通过 this.state 来访问 state，
+                                        通过 this.setState 来更新 state。 setState 通过一个队列机制来实现 state 的更新。调用 setState 函数之后</p>
+                                    </el-col>
+                                    <el-col><el-button type="primary">点击查看</el-button></el-col>
+                                </el-col>
+                            </el-row>-->
+
+                            <!--<el-col v-for="(o, index) in 2" :key="o">
+                                <el-card :body-style="{ padding: '0px' }">
+
+                                    <img src="img/a1.jpg" class="image" style="width: 200px;height: 200px;">
+                                    <div style="padding: 14px;">
+                                        <span>好吃的汉堡</span>
+                                        <div class="bottom clearfix">
+                                            <time class="time">2019-2-28 12:41</time>
+                                            <el-button type="text" class="button">操作按钮</el-button>
+                                        </div>
+                                    </div>
+                                </el-card>
+                            </el-col>-->
+
+                            <el-row class="articeList">
+                                <!--文章-->
+                                <el-col :span="24" v-for="(item,index) in tableData" :key="index">
+                                    <el-card :body-style="{ padding: '0px' }" shadow="hover"
+                                             style="padding-bottom:20px ;">
+                                        <el-col :span="23" :offset="1">
+                                            <el-col>
+                                                <h1><a :href=item.str+item.title+".html">{{item.title}}</a></h1></el-col>
+                                            <el-col>
+                                                <el-col :span="7" class="imgDesc">
+                                                    <a href="#"><img :src=item.pic class="image" width="150"
+                                                                     height="150"></a>
+                                                </el-col>
+                                                <el-col :span="14" :offset="2">
+                                                    <el-col>
+                                                        <p class="description">{{item.description}}</p>
+                                                    </el-col>
+                                                    <el-col class="aaa">
+                                                        <a :href="item.keywords">
+                                                            <el-tag size="mini">{{item.keywords}}</el-tag>
+                                                        </a>
+                                                        <time class="time dataTime"><i class="el-icon-time"></i>
+                                                            {{item.time}}
+                                                        </time>
+                                                        <time class="time dataTime"><i class="el-icon-view "> </i>{{item.click}}
+                                                            已阅读
+                                                        </time>
+                                                        <br/>
+                                                        <!--<el-button type="text" class="button">操作按钮</el-button>-->
+                                                        <a :href=item.title+".html">
+                                                            <el-button type="primary" size="small"
+                                                                       style="margin-top: 10px;">点击查看
+                                                            </el-button>
+                                                        </a>
+                                                    </el-col>
+                                                </el-col>
+
+                                            </el-col>
+
+                                        </el-col>
+                                    </el-card>
+                                </el-col>
+
+
+                            </el-row>
+
+                        </el-col>
+                        <!--右侧标签-->
+                        <el-col :span="7" :offset="1" class="rightTag">
+                            <!--标签-->
+                            <el-col :span="24">
+                                <!--<el-card class="box-card">
+                                <div slot="header" class="clearfix">
+                                    <span>卡片名称</span>
+                                </div>
+                                <div v-for="o in 4" :key="o" class="text item">
+                                    {{'列表内容 ' + o }}
+
+                                </div>
+                            </el-card>-->
+
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span>标签</span>
+                                    </div>
+                                    <div v-for="o in 4" :key="o" class="text item">
+                                        <a href="#">
+                                            <el-tag>标签一</el-tag>
+                                        </a>
+                                        <a href="#">
+                                            <el-tag type="success">标签二</el-tag>
+                                        </a>
+                                        <a href="#">
+                                            <el-tag type="info">标签三</el-tag>
+                                        </a>
+                                        <a href="#">
+                                            <el-tag type="warning">标签四</el-tag>
+                                        </a>
+
+                                    </div>
+                                </el-card>
+                            </el-col>
+                            <!--归纳-->
+                            <el-col :span="24">
+                                <el-card class="box-card">
+                                    <div slot="header" class="clearfix">
+                                        <span>归纳</span>
+                                    </div>
+                                    <!--<div v-for="o in 4" :key="o" class="text item">-->
+                                    <div>
+                                        <!--{{'列表内容 ' + o }}-->
+                                        <!--<p>2019年1月</p>-->
+                                        <ul class="box-ul">
+                                            <li>
+                                                <a href="#"><span class="timeList">2019年1月</span><i
+                                                        class="timeSum">(1)</i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="timeList">2019年2月</span><i
+                                                        class="timeSum">(1)</i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="timeList">2019年3月</span><i
+                                                        class="timeSum">(1)</i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="timeList">2018年11月</span><i
+                                                        class="timeSum">(1)</i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="timeList">2018年12月</span><i
+                                                        class="timeSum">(1)</i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </el-card>
+                            </el-col>
+                        </el-col>
+                    </el-col>
+                </el-row>
+                <!--<el-col :span="10">
+                    <div style="width: 100%; height: 60px; background: #f50;"></div>
+                </el-col>
+                <el-col></el-col>-->
+            </el-row>
+
+        </el-main>
+        <el-footer>
+            <el-row :gutter="24" type="flex" justify="center">
+                <el-col :span="8">
+                    2018 &copy; designed by <a href="#">xiaoni</a>
+                </el-col>
+            </el-row>
+        </el-footer>
+    </el-container>
+
+</div>
+
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            activeIndex: "1",
+            activeTextColor: "#455A64",
+            img: ["img/a1.jpg", "img/a2.jpg", "img/a3.jpg"], //轮播图
+            keyword: [],
+            tableData: [
+                // {
+                // 	title:"111",img:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1551539568&di=5d40a8948a97748b713084784ff29ded&src=http://b-ssl.duitang.com/uploads/item/201208/18/20120818153247_Nnzhm.jpeg",
+                // 	description:"挺合适简介部分",tag:"vue",time:"2019-02-01 21:01:02",readAll:25,
+                //
+                // },
+                // {
+                // 	title:"111",img:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1551539568&di=5d40a8948a97748b713084784ff29ded&src=http://b-ssl.duitang.com/uploads/item/201208/18/20120818153247_Nnzhm.jpeg",
+                // 	description:"挺合适简介部分",tag:"vue",time:"2019-02-01 21:01:02",readAll:25,
+                //
+                // },
+                // {
+                // 	title:"111",img:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1551539568&di=5d40a8948a97748b713084784ff29ded&src=http://b-ssl.duitang.com/uploads/item/201208/18/20120818153247_Nnzhm.jpeg",
+                // 	description:"挺合适简介部分",tag:"vue",time:"2019-02-01 21:01:02",readAll:25,
+                //
+                // },
+                // {
+                // 	title:"111",img:"https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1551539568&di=5d40a8948a97748b713084784ff29ded&src=http://b-ssl.duitang.com/uploads/item/201208/18/20120818153247_Nnzhm.jpeg",
+                // 	description:"挺合适简介部分",tag:"vue",time:"2019-02-01 21:01:02",readAll:25,
+                //
+                // }
+            ],
+            keyword: [
+                // {"vue"}
+            ]
+        },
+        created: function () {
+            //在 then的内部不能使用Vue的实例化的this, 因为在内部 this 没有被绑定。
+            var self = this;
+            /*var start =(this.currentPage-1)*this.pageSize;
+            var end =this.currentPage*this.pageSize+1;//分页
+            axios.post('/Loan/getListLoan',{'start':start,'end':end}).then(function(response){
+                self.total=response.data.total;
+                self.tableData = response.data.data;
+                console.log(self.total);
+            })*/
+
+
+            axios.post('/leading/getList').then(function (response) {
+                self.total = response.data.total;
+                self.tableData = response.data.data;
+                // console.log(self.total);
+                console.log(response.data)
+
+            })
+
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+
+        }
+    })
+</script>
+
+</html>
